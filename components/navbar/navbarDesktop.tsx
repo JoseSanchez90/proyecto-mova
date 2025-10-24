@@ -60,7 +60,7 @@ export default function NavbarDesktop() {
         onClick={() => scrollToSection("inicio")}
         className="cursor-pointer"
       >
-        <p className={clsx("text-2xl tracking-tighte font-bold [text-shadow:3px_3px_4px_rgba(0,0,0,0.4)] dark:[text-shadow:3px_3px_4px_rgba(255,255,255,0.3)] text-blue-700 dark:text-blue-500", pacifico.className)}>MOVA</p>
+        <p className={clsx("text-xl tracking-tighte font-bold [text-shadow:3px_3px_4px_rgba(0,0,0,0.4)] dark:[text-shadow:3px_3px_4px_rgba(255,255,255,0.3)] text-blue-700 dark:text-blue-500", pacifico.className)}>MOVA</p>
       </button>
 
       {/* Enlaces */}

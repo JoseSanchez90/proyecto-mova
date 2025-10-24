@@ -597,7 +597,7 @@ function HomePage() {
                   <div>
                     <p className="font-medium mb-1 dark:text-white">Email</p>
                     <p className="text-neutral-600 dark:text-neutral-400">
-                      mwtrazo@gmail.com
+                      movaestudio@gmail.com
                     </p>
                   </div>
                 </div>
@@ -770,7 +770,7 @@ function HomePage() {
           <div className="grid md:grid-cols-4 gap-8 mb-8">
             <div className="md:col-span-1">
               <h3 className="text-2xl font-light mb-4">
-                Estudio <span className={clsx("text-xl", pacifico.className)}>MOVA</span>
+                Estudio <span className={clsx("text-lg", pacifico.className)}>MOVA</span>
               </h3>
               <p className="text-neutral-400 text-sm mb-6">
                 Arquitectura que inspira y transforma espacios
@@ -857,7 +857,7 @@ function HomePage() {
             <div>
               <h4 className="font-medium mb-4">Contacto</h4>
               <div className="space-y-2 text-sm text-neutral-400">
-                <p>mwtrazo@gmail.com</p>
+                <p>movaestudio@gmail.com</p>
                 <p>+51 999 888 777</p>
                 <p>Lima, Perú</p>
                 <a
