@@ -17,19 +17,12 @@ import {
 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { AuroraText } from "@/components/ui/aurora-text";
-import { FaFacebook, FaWhatsapp } from "react-icons/fa";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import clsx from "clsx";
-import { Pacifico } from "next/font/google";
 import { BsFacebook, BsInstagram, BsWhatsapp } from "react-icons/bs";
 import Link from "next/link";
-
-const pacifico = Pacifico({
-  subsets: ["latin"],
-  variable: "--font-sans",
-  weight: ["400"],
-});
+import { pacifico } from "@/lib/fonts";
 
 function HomePage() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -585,20 +578,20 @@ function HomePage() {
 
       {/* Contact Section */}
       <section id="contacto" className="py-20 px-6 lg:px-8">
-        <div className="max-w-4xl 2xl:max-w-7xl mx-auto">
+        <div className="max-w-4xl md:max-w-[1000px] 2xl:max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             <div>
               <h2 className="text-4xl sm:text-5xl font-bold tracking-tight mb-4 text-neutral-900 dark:text-white">
                 Comencemos tu proyecto
               </h2>
-              <p className="text-neutral-600 dark:text-neutral-400 mb-12 max-w-2xl mx-auto text-base sm:text-lg">
+              <p className="text-neutral-600 dark:text-neutral-400 mb-8 2xl:mb-12 max-w-2xl mx-auto text-base sm:text-lg">
                 Estamos listos para escuchar tus ideas y convertirlas en
                 realidad. Contáctanos y agenda una consulta sin compromiso.
               </p>
 
-              <div className="flex flex-col lg:flex-row gap-6 lg:gap-0 justify-between">
+              <div className="flex flex-col lg:flex-row gap-6 lg:gap-20">
                 <div className="flex items-start gap-4">
-                  <div className="bg-neutral-100 dark:bg-neutral-800 p-3 rounded-full">
+                  <div className="bg-neutral-300 dark:bg-neutral-800 p-3 rounded-full">
                     <Mail size={20} className="dark:text-white" />
                   </div>
                   <div>
@@ -610,7 +603,7 @@ function HomePage() {
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="bg-neutral-100 dark:bg-neutral-800 p-3 rounded-full">
+                  <div className="bg-neutral-300 dark:bg-neutral-800 p-3 rounded-full">
                     <MapPin size={20} className="dark:text-white" />
                   </div>
                   <div>
@@ -622,26 +615,12 @@ function HomePage() {
                     </p>
                   </div>
                 </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="bg-neutral-100 dark:bg-neutral-800 p-3 rounded-full">
-                    <FaWhatsapp size={20} className="dark:text-white" />
-                  </div>
-                  <div>
-                    <p className="font-medium mb-1 dark:text-white">
-                      Escribenos
-                    </p>
-                    <p className="text-neutral-600 dark:text-neutral-400">
-                      999 888 777
-                    </p>
-                  </div>
-                </div>
               </div>
 
               {/* Horario - NUEVA SUBSECCIÓN */}
-              <div className="mt-8 sm:mt-12 grid grid-cols-1 gap-6">
+              <div className="mt-8 2xl:mt-12 grid grid-cols-1 gap-6">
                 {/* Horario */}
-                <div className="p-6 rounded-2xl mb-8 border border-black shadow-[8px_8px_0_#000] bg-white dark:bg-neutral-800 transition-all">
+                <div className="p-6 rounded-2xl mb-6 2xl:mb-8 border border-black shadow-[8px_8px_0_#000] bg-white dark:bg-neutral-800 transition-all">
                   <h3 className="font-semibold mb-4 dark:text-white text-lg">
                     Horario de atención
                   </h3>
@@ -674,7 +653,7 @@ function HomePage() {
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
                     allowFullScreen
-                    className="w-full h-[300px] rounded-2xl"
+                    className="w-full h-[300px] md:h-[250px] 2xl:h-[300px] rounded-2xl"
                   ></iframe>
                 </div>
               </div>
@@ -723,18 +702,19 @@ function HomePage() {
                     Tipo de proyecto
                   </Label>
                   <select
+                    defaultValue=""
                     className={clsx(
                       "w-full dark:bg-neutral-800 py-1.5 px-4 border border-gray-300 dark:border-neutral-700 rounded-full text-sm"
                     )}
                   >
-                    <option disabled hidden className="text-sm">
+                    <option value="" disabled hidden className="text-sm">
                       Selecciona una opción
                     </option>
                     <option className="text-sm">Diseño Arquitectónico</option>
-                    <option className="text-sm">Interiorismo</option>{" "}
-                    <option>Remodelación</option>
-                    <option className="text-sm">Consultoría</option>{" "}
-                    <option>Otro</option>
+                    <option className="text-sm">Interiorismo</option>
+                    <option className="text-sm">Remodelación</option>
+                    <option className="text-sm">Consultoría</option>
+                    <option className="text-sm">Otro</option>
                   </select>
                 </div>
 
@@ -773,15 +753,14 @@ function HomePage() {
             Convierte tu visión en realidad. Agenda una consulta gratuita con
             nuestro equipo de expertos.
           </p>
-          <button
-            onClick={() => scrollToSection("contacto")}
-            className="group pl-6 sm:pl-8 pr-2 py-2 sm:py-3 rounded-full bg-white text-black text-sm sm:text-base font-semibold transition-colors inline-flex items-center gap-3 sm:gap-4 cursor-pointer hover:bg-neutral-200"
-          >
-            Agendar consulta gratuita
-            <div className="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center bg-black rounded-full">
-              <ArrowRight className="transition-all duration-300 text-white group-hover:-rotate-45 w-4 h-4 sm:w-5 sm:h-5" />
-            </div>
-          </button>
+          <Link href="https://wa.me/51999888777" target="_blank" rel="noopener noreferrer">
+            <button className="group pl-6 sm:pl-8 pr-2 py-2 sm:py-3 rounded-full bg-white text-black text-sm sm:text-base font-semibold transition-colors inline-flex items-center gap-3 sm:gap-4 cursor-pointer hover:bg-neutral-200">
+              Agendar consulta gratuita
+              <div className="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center bg-black rounded-full">
+                <ArrowRight className="transition-all duration-300 text-white group-hover:-rotate-45 w-4 h-4 sm:w-5 sm:h-5" />
+              </div>
+            </button>
+          </Link>
         </div>
       </section>
 
@@ -791,10 +770,7 @@ function HomePage() {
           <div className="grid md:grid-cols-4 gap-8 mb-8">
             <div className="md:col-span-1">
               <h3 className="text-2xl font-light mb-4">
-                Estudio{" "}
-                <span className={clsx("text-lg", pacifico.className)}>
-                  MOVA
-                </span>
+                Estudio <span className={clsx("text-xl", pacifico.className)}>MOVA</span>
               </h3>
               <p className="text-neutral-400 text-sm mb-6">
                 Arquitectura que inspira y transforma espacios
@@ -819,7 +795,7 @@ function HomePage() {
                   </button>
                 </Link>
                 <Link
-                  href="https://web.whatsapp.com/"
+                  href="https://wa.me/51999888777"
                   target="_blank"
                   rel="noopener noreferrer"
                 >

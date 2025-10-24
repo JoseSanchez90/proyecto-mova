@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
-import { Inter, Pacifico, Roboto_Mono } from "next/font/google";
+import { Inter, Oleo_Script, Roboto_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "next-themes";
 import Navbar from "@/components/navbar/navbar";
+import { oleo, pacifico } from "@/lib/fonts";
 
 const inter = Inter({
   variable: "--font-sans",
@@ -13,12 +14,6 @@ const robotoMono = Roboto_Mono({
   variable: "--font-mono",
   subsets: ["latin"],
 });
-
-const pacifico = Pacifico({
-  subsets: ["latin"],
-  variable: "--font-sans",
-  weight: ["400"],
-})
 
 export const metadata: Metadata = {
   title: "MOVA",
@@ -33,7 +28,7 @@ export default function RootLayout({
   return (
     <html lang="es" suppressHydrationWarning>
       <body
-        className={`${inter.variable} ${robotoMono.variable} ${pacifico.variable}`}
+        className={`${inter.variable} ${robotoMono.variable} ${oleo.variable} ${pacifico.variable} font-heading`}
       >
         <Navbar />
         <ThemeProvider

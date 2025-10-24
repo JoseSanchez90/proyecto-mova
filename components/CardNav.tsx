@@ -4,7 +4,7 @@ import { gsap } from "gsap";
 import { GoArrowUpRight } from "react-icons/go";
 import { AnimatedThemeToggler } from "./ui/animated-theme-toggler";
 import clsx from "clsx";
-import { Pacifico } from "next/font/google";
+import { pacifico } from "@/lib/fonts";
 
 type CardNavLink = {
   label: string;
@@ -31,14 +31,17 @@ export interface CardNavProps {
   buttonTextColor?: string;
 }
 
-const pacifico = Pacifico({
-  subsets: ["latin"],
-  variable: "--font-sans",
-  weight: ["400"],
-})
-
 const CardNav: React.FC<CardNavProps> = ({
-  logo = <strong className={clsx("text-2xl tracking-tighte [text-shadow:3px_3px_4px_rgba(0,0,0,0.4)] dark:[text-shadow:3px_3px_4px_rgba(255,255,255,0.3)] text-blue-700 dark:text-blue-500", pacifico.className)}>MOVA</strong>,
+  logo = (
+    <strong
+      className={clsx(
+        "text-2xl tracking-tighte [text-shadow:3px_3px_4px_rgba(0,0,0,0.4)] dark:[text-shadow:3px_3px_4px_rgba(255,255,255,0.3)] text-blue-700 dark:text-blue-500",
+        pacifico.className
+      )}
+    >
+      MOVA
+    </strong>
+  ),
   logoAlt = "Logo",
   items,
   className = "",
@@ -58,35 +61,28 @@ const CardNav: React.FC<CardNavProps> = ({
     const targetId = href.replace("#", "");
     const element = document.getElementById(targetId);
 
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
+    if (element) element.scrollIntoView({ behavior: "smooth" });
 
-    // Cierra el menú
-    setIsHamburgerOpen(false);
-    const tl = tlRef.current;
-    if (tl) {
-      tl.eventCallback("onReverseComplete", () => setIsExpanded(false));
-      tl.reverse();
-    }
+    if (isExpanded) toggleMenu(); // ✅ usa la misma función de cierre
   };
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
-      if (navRef.current && !navRef.current.contains(e.target as Node)) {
-        if (isExpanded) {
-          setIsHamburgerOpen(false);
-          const tl = tlRef.current;
-          if (tl) {
-            tl.eventCallback("onReverseComplete", () => setIsExpanded(false));
-            tl.reverse();
-          }
+      if (!isExpanded) return; // ✅ no hacer nada si ya está cerrado
+      if (!navRef.current) return;
+      if (!navRef.current.contains(e.target as Node)) {
+        setIsHamburgerOpen(false);
+        const tl = tlRef.current;
+        if (tl) {
+          tl.eventCallback("onReverseComplete", () => setIsExpanded(false));
+          tl.reverse();
         }
       }
     };
 
-    document.addEventListener("click", handleClickOutside);
-    return () => document.removeEventListener("click", handleClickOutside);
+    // ✅ Usa "mousedown" en lugar de "click"
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [isExpanded]);
 
   const calculateHeight = () => {
@@ -160,25 +156,13 @@ const CardNav: React.FC<CardNavProps> = ({
 
   useLayoutEffect(() => {
     const handleResize = () => {
-      if (!tlRef.current) return;
+      if (!tlRef.current || !navRef.current) return;
 
-      if (isExpanded) {
-        const newHeight = calculateHeight();
-        gsap.set(navRef.current, { height: newHeight });
+      // ✅ No recalcular si el menú está cerrado
+      if (!isExpanded) return;
 
-        tlRef.current.kill();
-        const newTl = createTimeline();
-        if (newTl) {
-          newTl.progress(1);
-          tlRef.current = newTl;
-        }
-      } else {
-        tlRef.current.kill();
-        const newTl = createTimeline();
-        if (newTl) {
-          tlRef.current = newTl;
-        }
-      }
+      const newHeight = calculateHeight();
+      gsap.set(navRef.current, { height: newHeight });
     };
 
     window.addEventListener("resize", handleResize);
@@ -188,14 +172,18 @@ const CardNav: React.FC<CardNavProps> = ({
   const toggleMenu = () => {
     const tl = tlRef.current;
     if (!tl) return;
+
     if (!isExpanded) {
       setIsHamburgerOpen(true);
       setIsExpanded(true);
       tl.play(0);
     } else {
       setIsHamburgerOpen(false);
-      tl.eventCallback("onReverseComplete", () => setIsExpanded(false));
-      tl.reverse();
+      tl.eventCallback("onReverseComplete", () => {
+        setIsExpanded(false);
+        tl.eventCallback("onReverseComplete", null); // ✅ limpia el callback
+      });
+      tl.reverse(0); // ✅ asegura que revierta desde el inicio
     }
   };
 
@@ -253,7 +241,14 @@ const CardNav: React.FC<CardNavProps> = ({
               }
             }}
           >
-            <h2 className={clsx("text-xl tracking-tighte [text-shadow:3px_3px_4px_rgba(0,0,0,0.4)] dark:[text-shadow:3px_3px_4px_rgba(255,255,255,0.3)] text-blue-700 dark:text-blue-500", pacifico.className)}>MOVA</h2>
+            <h2
+              className={clsx(
+                "text-xl tracking-tighte [text-shadow:3px_3px_4px_rgba(0,0,0,0.4)] dark:[text-shadow:3px_3px_4px_rgba(255,255,255,0.3)] text-blue-700 dark:text-blue-500",
+                pacifico.className
+              )}
+            >
+              MOVA
+            </h2>
           </div>
 
           <div className="order-2 mt-2">
@@ -285,7 +280,7 @@ const CardNav: React.FC<CardNavProps> = ({
                     key={`${lnk.label}-${i}`}
                     onClick={(e) => handleScrollToSection(e, lnk.href)}
                     href={lnk.href}
-                    className="nav-card-link inline-flex items-center gap-1.5 no-underline cursor-pointer transition-opacity duration-300 hover:opacity-75 text-lg font-semibold text-white"
+                    className="nav-card-link inline-flex items-center gap-1.5 no-underline cursor-pointer transition-opacity duration-300 hover:opacity-75 text-lg font-light text-white"
                     aria-label={lnk.ariaLabel}
                   >
                     <GoArrowUpRight
