@@ -1,9 +1,15 @@
 "use client";
-import Image from "next/image";
-import Logo from "/public/images/mwtrazo-logo.png";
+
 import { AnimatedThemeToggler } from "../ui/animated-theme-toggler";
 import { useEffect, useState } from "react";
-import Link from "next/link";
+import { Pacifico } from "next/font/google";
+import clsx from "clsx";
+
+export const pacifico = Pacifico({
+  subsets: ["latin"],
+  variable: "--font-sans",
+  weight: ["400"],
+})
 
 export default function NavbarDesktop() {
   const [activeSection, setActiveSection] = useState("inicio");
@@ -60,7 +66,7 @@ export default function NavbarDesktop() {
         onClick={() => scrollToSection("inicio")}
         className="cursor-pointer"
       >
-        <Image src={Logo} alt="Logo" className="w-14" />
+        <strong className={clsx("text-2xl tracking-tighte [text-shadow:3px_3px_4px_rgba(0,0,0,0.4)] dark:[text-shadow:3px_3px_4px_rgba(255,255,255,0.3)] text-blue-700 dark:text-blue-500", pacifico.className)}>MOVA</strong>
       </button>
 
       {/* Enlaces */}

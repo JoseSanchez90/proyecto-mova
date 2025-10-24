@@ -21,7 +21,7 @@ export default function NavbarMobile() {
 
   return (
     <CardNav
-      logo="/images/mwtrazo-logo.png"
+      logo=""
       logoAlt="MWTRAZO Logo"
       items={items}
       baseColor="#fff"

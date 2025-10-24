@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Libertinus_Keyboard, Roboto_Mono } from "next/font/google";
+import { Inter, Pacifico, Roboto_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "next-themes";
 import Navbar from "@/components/navbar/navbar";
@@ -14,8 +14,14 @@ const robotoMono = Roboto_Mono({
   subsets: ["latin"],
 });
 
+const pacifico = Pacifico({
+  subsets: ["latin"],
+  variable: "--font-sans",
+  weight: ["400"],
+})
+
 export const metadata: Metadata = {
-  title: "MWTRAZO",
+  title: "MOVA",
   description: "Web para servicio de arquitectura",
 };
 
@@ -27,7 +33,7 @@ export default function RootLayout({
   return (
     <html lang="es" suppressHydrationWarning>
       <body
-        className={`${inter.variable} ${robotoMono.variable} antialiased`}
+        className={`${inter.variable} ${robotoMono.variable} ${pacifico.variable}`}
       >
         <Navbar />
         <ThemeProvider

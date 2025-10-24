@@ -27,7 +27,7 @@ export default function Navbar() {
         <nav
           className={clsx(
             "rounded-full bg-neutral-100 dark:bg-neutral-900 transition-all duration-500",
-            isScrolled ? "mx-auto max-w-5xl 2xl:max-w-[900px] mt-2 shadow-lg shadow-black/10 dark:shadow-white/10" : "mx-auto max-w-5xl 2xl:max-w-[1000px] mt-8"
+            isScrolled ? "bg-white border mx-auto max-w-5xl dark:bg-neutral-950 2xl:max-w-[900px] mt-2 shadow-lg shadow-black/10 dark:shadow-white/10" : "mx-auto max-w-5xl 2xl:max-w-[1000px] mt-8"
           )}
         >
           <NavbarDesktop />

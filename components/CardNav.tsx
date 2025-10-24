@@ -3,6 +3,8 @@ import { gsap } from "gsap";
 // use your own icon import if react-icons is not available
 import { GoArrowUpRight } from "react-icons/go";
 import { AnimatedThemeToggler } from "./ui/animated-theme-toggler";
+import clsx from "clsx";
+import { Pacifico } from "next/font/google";
 
 type CardNavLink = {
   label: string;
@@ -29,8 +31,14 @@ export interface CardNavProps {
   buttonTextColor?: string;
 }
 
+const pacifico = Pacifico({
+  subsets: ["latin"],
+  variable: "--font-sans",
+  weight: ["400"],
+})
+
 const CardNav: React.FC<CardNavProps> = ({
-  logo,
+  logo = <strong className={clsx("text-2xl tracking-tighte [text-shadow:3px_3px_4px_rgba(0,0,0,0.4)] dark:[text-shadow:3px_3px_4px_rgba(255,255,255,0.3)] text-blue-700 dark:text-blue-500", pacifico.className)}>MOVA</strong>,
   logoAlt = "Logo",
   items,
   className = "",
@@ -245,7 +253,7 @@ const CardNav: React.FC<CardNavProps> = ({
               }
             }}
           >
-            <img src={logo} alt={logoAlt} className="logo h-7" />
+            <h2 className={clsx("text-xl tracking-tighte [text-shadow:3px_3px_4px_rgba(0,0,0,0.4)] dark:[text-shadow:3px_3px_4px_rgba(255,255,255,0.3)] text-blue-700 dark:text-blue-500", pacifico.className)}>MOVA</h2>
           </div>
 
           <div className="order-2 mt-2">
