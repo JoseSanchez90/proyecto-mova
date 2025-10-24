@@ -93,8 +93,8 @@ export default function NavbarDesktop() {
           className={`rounded-full px-8 py-3 transition-all duration-300 cursor-pointer font-semibold
             ${
               activeSection === "contacto"
-                ? "bg-blue-500 text-white"
-                : "bg-black dark:bg-white text-white dark:text-black hover:bg-blue-500 hover:text-white"
+                ? "bg-blue-400 text-white"
+                : "bg-blue-600 text-white hover:bg-blue-500 hover:text-white"
             }`}
         >
           Contacto

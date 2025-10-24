@@ -23,6 +23,10 @@ import clsx from "clsx";
 import { BsFacebook, BsInstagram, BsWhatsapp } from "react-icons/bs";
 import Link from "next/link";
 import { pacifico } from "@/lib/fonts";
+import PortfolioSection from "@/components/portfolioSection";
+import { FaBullseye } from "react-icons/fa6";
+import { IoEyeOutline } from "react-icons/io5";
+import { HiOutlineHeart } from "react-icons/hi2";
 
 function HomePage() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -43,67 +47,59 @@ function HomePage() {
   const FeaturesItems = [
     {
       title: "Excelencia",
-      icon: (
-        <Award className="w-6 h-6 sm:w-8 sm:h-8 text-white dark:text-black" />
-      ),
+      icon: <Award className="w-6 h-6 sm:w-8 sm:h-8 text-white" />,
       text: "Calidad superior en cada detalle de nuestros proyectos",
     },
     {
       title: "Innovación",
-      icon: (
-        <Lightbulb className="w-6 h-6 sm:w-8 sm:h-8 text-white dark:text-black" />
-      ),
+      icon: <Lightbulb className="w-6 h-6 sm:w-8 sm:h-8 text-white" />,
       text: "Diseños vanguardistas con tecnología de última generación",
     },
     {
       title: "Colaboración",
-      icon: (
-        <Users className="w-6 h-6 sm:w-8 sm:h-8 text-white dark:text-black" />
-      ),
+      icon: <Users className="w-6 h-6 sm:w-8 sm:h-8 text-white" />,
       text: "Trabajo conjunto con el cliente en cada fase",
     },
     {
       title: "Precisión",
-      icon: (
-        <Target className="w-6 h-6 sm:w-8 sm:h-8 text-white dark:text-black" />
-      ),
+      icon: <Target className="w-6 h-6 sm:w-8 sm:h-8 text-white" />,
       text: "Entrega puntual y cumplimiento de objetivos",
     },
   ];
 
   const ServicesItems = [
     {
-      icon: <Building2 className="w-7 h-7 text-white dark:text-black" />,
+      icon: <Building2 className="w-7 h-7 text-white" />,
       title: "Diseño Arquitectónico",
       description:
         "Proyectos residenciales y comerciales desde el concepto hasta la ejecución.",
     },
     {
-      icon: <Home className="w-7 h-7 text-white dark:text-black" />,
+      icon: <Home className="w-7 h-7 text-white" />,
       title: "Interiorismo",
       description:
         "Diseño de interiores funcionales que reflejan la identidad de cada espacio.",
     },
     {
-      icon: <Pencil className="w-7 h-7 text-white dark:text-black" />,
+      icon: <Pencil className="w-7 h-7 text-white" />,
       title: "Remodelaciones",
       description:
         "Renovación y optimización de espacios existentes con visión contemporánea.",
     },
     {
-      icon: <Compass className="w-7 h-7 text-white dark:text-black" />,
+      icon: <Compass className="w-7 h-7 text-white" />,
       title: "Consultoría",
       description:
         "Asesoría técnica y acompañamiento en todas las fases del proyecto.",
     },
     {
-      icon: <CheckCircle2 className="w-7 h-7 text-white dark:text-black" />,
+      icon: <CheckCircle2 className="w-7 h-7 text-white" />,
       title: "Supervisión de obra",
       description:
         "Control y seguimiento detallado para garantizar la calidad del proyecto.",
     },
     {
-      icon: <Shield className="w-7 h-7 text-white dark:text-black" />,
+      icon: <Shield className="w-7 h-7 text-white" />,
       title: "Diseño sostenible",
       description:
         "Arquitectura consciente con el medio ambiente y eficiencia energética.",
@@ -112,16 +108,19 @@ function HomePage() {
 
   const ValuesItems = [
     {
+      icon: <FaBullseye className="w-7 h-7 text-white" />,
       title: "Misión",
       descripcion:
         "Crear arquitectura que mejore la calidad de vida de las personas, respetando el entorno y las necesidades individuales de cada cliente.",
     },
     {
+      icon: <IoEyeOutline className="w-7 h-7 text-white" />,
       title: "Visión",
       descripcion:
         "Ser reconocidos como líderes en diseño arquitectónico sostenible e innovador, transformando espacios en Latinoamérica.",
     },
     {
+      icon: <HiOutlineHeart className="w-7 h-7 text-white" />,
       title: "Valores",
       descripcion:
         "Integridad, creatividad, compromiso con la excelencia y respeto por el medio ambiente en cada proyecto.",
@@ -157,6 +156,62 @@ function HomePage() {
       year: "2023",
       area: "2500m²",
     },
+    {
+      id: 5,
+      title: "Remodelación de Cocina Familiar",
+      category: "Remodelación",
+      year: "2024",
+      area: "40m²",
+    },
+    {
+      id: 6,
+      title: "Vivienda Compacta Sostenible",
+      category: "Residencial",
+      year: "2024",
+      area: "120m²",
+    },
+    {
+      id: 7,
+      title: "Diseño de Oficina en Casa",
+      category: "Interiorismo",
+      year: "2023",
+      area: "25m²",
+    },
+    {
+      id: 8,
+      title: "Reforma de Fachada Urbana",
+      category: "Remodelación",
+      year: "2023",
+      area: "60m²",
+    },
+    {
+      id: 9,
+      title: "Tienda de Café de Autor",
+      category: "Comercial",
+      year: "2024",
+      area: "90m²",
+    },
+    {
+      id: 10,
+      title: "Departamento Familiar Contemporáneo",
+      category: "Interiorismo",
+      year: "2024",
+      area: "140m²",
+    },
+    {
+      id: 11,
+      title: "Ampliación de Vivienda Unifamiliar",
+      category: "Residencial",
+      year: "2022",
+      area: "220m²",
+    },
+    {
+      id: 12,
+      title: "Estudio Creativo Minimalista",
+      category: "Corporativo",
+      year: "2023",
+      area: "75m²",
+    },
   ];
 
   return (
@@ -189,7 +244,7 @@ function HomePage() {
               className="group pl-8 pr-2 py-2 rounded-full bg-gray-100 text-base font-semibold text-black transition-colors inline-flex items-center gap-4 cursor-pointer hover:bg-gray-300"
             >
               Iniciar proyecto
-              <div className="w-10 h-10 flex items-center justify-center bg-black rounded-full">
+              <div className="w-10 h-10 flex items-center justify-center bg-blue-600 rounded-full">
                 <ArrowRight className="transition-all duration-300 text-white group-hover:-rotate-45" />
               </div>
             </button>
@@ -261,11 +316,9 @@ function HomePage() {
                 {/* Ícono */}
                 <div
                   className="mb-6 flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-full 
-                bg-neutral-900 dark:bg-white lg:group-hover:scale-105 lg:transition-transform lg:duration-300 shadow-md"
+                bg-blue-700 shadow-md"
                 >
-                  <span className="text-white dark:text-black text-2xl">
-                    {item.icon}
-                  </span>
+                  {item.icon}
                 </div>
 
                 {/* Título */}
@@ -302,7 +355,7 @@ function HomePage() {
                 key={i}
                 className="relative flex flex-col items-center text-center p-8 rounded-2xl bg-white border dark:bg-neutral-800 border-black shadow-[8px_8px_0_#000] lg:shadow-[4px_4px_0_#000] lg:hover:shadow-[8px_8px_0_#000] lg:hover:-translate-x-1 lg:hover:-translate-y-1 lg:transition-all duration-200"
               >
-                <div className="w-14 h-14 bg-neutral-900 dark:bg-white rounded-full flex items-center justify-center mb-6 lg:group-hover:scale-110 lg:transition-transform">
+                <div className="w-14 h-14 bg-blue-700 rounded-full flex items-center justify-center mb-6 lg:group-hover:scale-110 lg:transition-transform">
                   {services.icon}
                 </div>
                 <h3 className="text-xl font-medium mb-3 dark:text-white">
@@ -403,7 +456,7 @@ function HomePage() {
                   className="group pl-8 pr-2 py-2 rounded-full bg-gray-100 text-base font-semibold text-black transition-colors inline-flex items-center gap-4 cursor-pointer hover:bg-gray-300"
                 >
                   Conocer más
-                  <div className="w-10 h-10 flex items-center justify-center bg-black rounded-full">
+                  <div className="w-10 h-10 flex items-center justify-center bg-blue-700 rounded-full">
                     <ArrowRight className="transition-all duration-300 text-white group-hover:-rotate-45" />
                   </div>
                 </button>
@@ -420,9 +473,14 @@ function HomePage() {
                 key={i}
                 className="relative flex flex-col items-center text-center p-8 rounded-2xl bg-white border dark:bg-neutral-800 border-black shadow-[8px_8px_0_#000] lg:shadow-[4px_4px_0_#000] lg:hover:shadow-[8px_8px_0_#000] lg:hover:-translate-x-1 lg:hover:-translate-y-1 lg:transition-all duration-200"
               >
-                <h3 className="text-xl sm:text-2xl font-semibold mb-3 sm:mb-4 dark:text-white">
-                  {values.title}
-                </h3>
+                <div className="relative flex items-center gap-4 right-8">
+                  <div className="w-14 h-14 bg-blue-700 rounded-full flex items-center justify-center mb-6 lg:group-hover:scale-110 lg:transition-transform">
+                    {values.icon}
+                  </div>
+                  <h2 className="text-xl sm:text-2xl font-semibold mb-3 sm:mb-4 dark:text-white">
+                    {values.title}
+                  </h2>
+                </div>
                 <p className="text-sm sm:text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
                   {values.descripcion}
                 </p>
@@ -433,66 +491,11 @@ function HomePage() {
       </section>
 
       {/* Portfolio Section */}
-      <section id="estudio" className="py-20 px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl sm:text-5xl font-bold tracking-tight mb-4 text-neutral-900 dark:text-white">
-              Estudio
-            </h2>
-            <p className="text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto text-base sm:text-lg">
-              Explora algunos de nuestros proyectos más destacados
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8 mb-12">
-            {ProjectsItems.map((item, i) => (
-              <div
-                key={i}
-                className="group cursor-pointer rounded-2xl bg-white dark:bg-neutral-800 border border-black shadow-[8px_8px_0_#000] p-8"
-              >
-                <div className="bg-neutral-200 dark:bg-neutral-800 rounded-2xl h-80 mb-4 overflow-hidden flex items-center justify-center group-hover:scale-[1.02] transition-transform duration-300">
-                  <div className="text-neutral-400 dark:text-neutral-600 text-sm">
-                    Proyecto {item.id}
-                  </div>
-                </div>
-                <h3 className="text-xl font-medium mb-2 group-hover:text-neutral-600 dark:group-hover:text-neutral-400 transition-colors dark:text-white">
-                  {item.title}
-                </h3>
-                <div className="flex flex-wrap gap-2 text-xs sm:text-sm text-neutral-600 dark:text-neutral-400">
-                  <span>{item.category}</span>
-                  <span>•</span>
-                  <span>{item.year}</span>
-                  <span>•</span>
-                  <span>{item.area}</span>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Project Categories - NUEVA SUBSECCIÓN */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-6">
-            {[
-              "Todos",
-              "Residencial",
-              "Comercial",
-              "Interiorismo",
-              "Remodelación",
-              "Corporativo",
-            ].map((category) => (
-              <button
-                key={category}
-                className="px-4 sm:px-6 py-3 sm:py-4 rounded-full border-2 bg-black text-white hover:bg-neutral-900 dark:hover:bg-white hover:text-white dark:hover:text-black transition-colors text-xs sm:text-sm font-medium dark:text-white cursor-pointer"
-              >
-                {category}
-              </button>
-            ))}
-          </div>
-        </div>
-      </section>
+      <PortfolioSection projects={ProjectsItems} />
 
       {/* Testimonials Section - NUEVA */}
       <section className="py-12 sm:py-16 lg:py-24 px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
+        <div className="lg:max-w-6xl 2xl:max-w-7xl mx-auto">
           <div className="text-center mb-12 sm:mb-16">
             <h2 className="text-4xl sm:text-5xl font-bold tracking-tight mb-4 text-neutral-900 dark:text-white">
               Lo que dicen nuestros clientes
@@ -591,7 +594,7 @@ function HomePage() {
 
               <div className="flex flex-col lg:flex-row gap-6 lg:gap-20">
                 <div className="flex items-start gap-4">
-                  <div className="bg-neutral-300 dark:bg-neutral-800 p-3 rounded-full">
+                  <div className="bg-blue-700 p-3 rounded-full">
                     <Mail size={20} className="dark:text-white" />
                   </div>
                   <div>
@@ -603,7 +606,7 @@ function HomePage() {
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="bg-neutral-300 dark:bg-neutral-800 p-3 rounded-full">
+                  <div className="bg-blue-700 p-3 rounded-full">
                     <MapPin size={20} className="dark:text-white" />
                   </div>
                   <div>
@@ -618,7 +621,7 @@ function HomePage() {
               </div>
 
               {/* Horario - NUEVA SUBSECCIÓN */}
-              <div className="mt-8 2xl:mt-12 grid grid-cols-1 gap-6">
+              <div className="mt-8 2xl:mt-12 grid grid-cols-1 gap-2">
                 {/* Horario */}
                 <div className="p-6 rounded-2xl mb-6 2xl:mb-8 border border-black shadow-[8px_8px_0_#000] bg-white dark:bg-neutral-800 transition-all">
                   <h3 className="font-semibold mb-4 dark:text-white text-lg">
@@ -653,7 +656,7 @@ function HomePage() {
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
                     allowFullScreen
-                    className="w-full h-[300px] md:h-[250px] 2xl:h-[300px] rounded-2xl"
+                    className="w-full h-[300px] md:h-[250px] rounded-2xl"
                   ></iframe>
                 </div>
               </div>
@@ -729,7 +732,7 @@ function HomePage() {
                   />
                 </div>
 
-                <button className="w-full bg-neutral-900 dark:bg-white text-white dark:text-black py-4 rounded-full text-sm hover:bg-neutral-800 dark:hover:bg-neutral-200 transition-colors font-semibold cursor-pointer">
+                <button className="w-full bg-blue-700 hover:bg-blue-500 text-white py-4 rounded-full text-sm transition-colors font-semibold cursor-pointer">
                   Enviar mensaje
                 </button>
 
@@ -753,10 +756,14 @@ function HomePage() {
             Convierte tu visión en realidad. Agenda una consulta gratuita con
             nuestro equipo de expertos.
           </p>
-          <Link href="https://wa.me/51999888777" target="_blank" rel="noopener noreferrer">
+          <Link
+            href="https://wa.me/51999888777"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <button className="group pl-6 sm:pl-8 pr-2 py-2 sm:py-3 rounded-full bg-white text-black text-sm sm:text-base font-semibold transition-colors inline-flex items-center gap-3 sm:gap-4 cursor-pointer hover:bg-neutral-200">
               Agendar consulta gratuita
-              <div className="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center bg-black rounded-full">
+              <div className="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center bg-blue-600 rounded-full">
                 <ArrowRight className="transition-all duration-300 text-white group-hover:-rotate-45 w-4 h-4 sm:w-5 sm:h-5" />
               </div>
             </button>
@@ -770,7 +777,10 @@ function HomePage() {
           <div className="grid md:grid-cols-4 gap-8 mb-8">
             <div className="md:col-span-1">
               <h3 className="text-2xl font-light mb-4">
-                Estudio <span className={clsx("text-lg", pacifico.className)}>MOVA</span>
+                Estudio{" "}
+                <span className={clsx("text-lg", pacifico.className)}>
+                  MOVA
+                </span>
               </h3>
               <p className="text-neutral-400 text-sm mb-6">
                 Arquitectura que inspira y transforma espacios
