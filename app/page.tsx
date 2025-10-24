@@ -898,7 +898,7 @@ function HomePage() {
           </div>
 
           <div className="border-t border-neutral-800 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-neutral-400">
-            <p>© 2024 mwtrazo. Todos los derechos reservados.</p>
+            <p>© 2024 Mova. Todos los derechos reservados.</p>
             <div className="flex gap-6 text-xs sm:text-sm">
               <button className="hover:text-white transition-colors">
                 Política de Privacidad
