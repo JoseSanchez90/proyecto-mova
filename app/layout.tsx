@@ -14,14 +14,6 @@ const robotoMono = Roboto_Mono({
   subsets: ["latin"],
 });
 
-const libertinus = Libertinus_Keyboard({
-  variable: "--font-libertinus",
-  subsets: ["latin"],
-  weight: ["400"],
-  style: ["normal"],
-})
-
-
 export const metadata: Metadata = {
   title: "MWTRAZO",
   description: "Web para servicio de arquitectura",
@@ -35,7 +27,7 @@ export default function RootLayout({
   return (
     <html lang="es" suppressHydrationWarning>
       <body
-        className={`${inter.variable} ${robotoMono.variable} ${libertinus.variable} antialiased`}
+        className={`${inter.variable} ${robotoMono.variable} antialiased`}
       >
         <Navbar />
         <ThemeProvider

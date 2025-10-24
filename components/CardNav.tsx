@@ -3,7 +3,6 @@ import { gsap } from "gsap";
 // use your own icon import if react-icons is not available
 import { GoArrowUpRight } from "react-icons/go";
 import { AnimatedThemeToggler } from "./ui/animated-theme-toggler";
-import Link from "next/link";
 
 type CardNavLink = {
   label: string;
@@ -198,7 +197,7 @@ const CardNav: React.FC<CardNavProps> = ({
 
   return (
     <div
-      className={`card-nav-container absolute left-1/2 -translate-x-1/2 w-[90%] max-w-[800px] z-99 top-4 ${className}`}
+      className={`card-nav-container absolute left-1/2 -translate-x-1/2 w-[90%] max-w-[800px] z-99 top-2 ${className}`}
     >
       <nav
         ref={navRef}
@@ -206,11 +205,11 @@ const CardNav: React.FC<CardNavProps> = ({
           isExpanded ? "open" : ""
         } block h-[60px] p-0 rounded-xl relative overflow-hidden will-change-[height] shadow-md shadow-black/30 dark:shadow-white/10 bg-gray-100 dark:bg-gray-950 transition-colors duration-300`}
       >
-        <div className="card-nav-top absolute inset-x-0 right-8 top-0 h-[60px] flex items-center justify-between p-2 pl-[1.1rem] z-2">
+        <div className="card-nav-top absolute inset-x-0 mx-5 h-[60px] flex items-center justify-between p-2 z-2">
           <div
             className={`hamburger-menu ${
               isHamburgerOpen ? "open" : ""
-            } group h-full flex flex-col items-center justify-center cursor-pointer gap-1.5 order-2 md:order-0 text-black dark:text-white`}
+            } group h-full flex flex-col items-center justify-center cursor-pointer gap-1.5 order-0 text-black dark:text-white`}
             onClick={toggleMenu}
             role="button"
             aria-label={isExpanded ? "Close menu" : "Open menu"}
@@ -229,7 +228,7 @@ const CardNav: React.FC<CardNavProps> = ({
           </div>
 
           <div
-            className="logo-container flex items-center md:absolute md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2 order-1 md:order-0 cursor-pointer"
+            className="logo-container flex items-center md:absolute md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2 order-1 cursor-pointer"
             onClick={() => {
               const element = document.getElementById("inicio");
               if (element) element.scrollIntoView({ behavior: "smooth" });
@@ -249,7 +248,7 @@ const CardNav: React.FC<CardNavProps> = ({
             <img src={logo} alt={logoAlt} className="logo h-7" />
           </div>
 
-          <div className="card-nav-cta-button md:hidden inline-flex border-0 rounded-[calc(0.75rem-0.2rem)] px-4 h-full font-medium cursor-pointer transition-colors duration-300">
+          <div className="order-2 mt-2">
             <AnimatedThemeToggler />
           </div>
         </div>
