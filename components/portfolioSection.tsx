@@ -22,16 +22,28 @@ interface PortfolioSectionProps {
 function PortfolioSection({ projects }: PortfolioSectionProps) {
   const [activeCategory, setActiveCategory] = useState<string>("Todos");
   const [filteredProjects, setFilteredProjects] = useState<Project[]>(projects);
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: "start" });
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    loop: false,
+    align: "start",
+  });
+  const [prevBtnDisabled, setPrevBtnDisabled] = useState(true);
+  const [nextBtnDisabled, setNextBtnDisabled] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState<number>(0);
 
   useEffect(() => {
     if (!emblaApi) return;
-    const onSelect = () => setSelectedIndex(emblaApi.selectedScrollSnap());
+
+    const onSelect = () => {
+      setSelectedIndex(emblaApi.selectedScrollSnap());
+      setPrevBtnDisabled(!emblaApi.canScrollPrev());
+      setNextBtnDisabled(!emblaApi.canScrollNext());
+    };
+
     emblaApi.on("select", onSelect);
     onSelect();
+
     return () => {
-      if (emblaApi && emblaApi.off) emblaApi.off("select", onSelect);
+      emblaApi.off("select", onSelect);
     };
   }, [emblaApi]);
 
@@ -50,7 +62,7 @@ function PortfolioSection({ projects }: PortfolioSectionProps) {
     <section id="estudio" className="py-20 px-2 lg:px-8">
       <div className="lg:max-w-6xl 2xl:max-w-7xl mx-auto">
         {/* Título */}
-        <div className="text-center mb-8">
+        <div className="text-center mb-6 lg:mb-8">
           <h2 className="text-4xl sm:text-5xl font-bold tracking-tight mb-4 text-neutral-900 dark:text-white">
             Estudio
           </h2>
@@ -60,7 +72,7 @@ function PortfolioSection({ projects }: PortfolioSectionProps) {
         </div>
 
         {/* Botones de categorías */}
-        <div className="flex flex-wrap justify-center gap-3 mb-12">
+        <div className="flex flex-wrap justify-center gap-3 mb-8 lg:mb-12">
           {[
             "Todos",
             "Residencial",
@@ -117,13 +129,22 @@ function PortfolioSection({ projects }: PortfolioSectionProps) {
           <div className="hidden sm:flex absolute inset-y-0 -left-13 justify-between items-center lg:w-[1260px] 2xl:w-[1400px]">
             <Button
               onClick={() => emblaApi?.scrollPrev()}
-              className="rounded-full shadow w-9 h-9 2xl:w-12 2xl:h-12 bg-blue-600 hover:dark:bg-gray-950 cursor-pointer"
+              disabled={prevBtnDisabled}
+              className={clsx(
+                "rounded-full shadow w-9 h-9 2xl:w-12 2xl:h-12 bg-blue-600 hover:dark:bg-gray-950 cursor-pointer",
+                prevBtnDisabled && "opacity-50 cursor-not-allowed"
+              )}
             >
               <FaArrowLeft className="w-6 h-6 dark:text-white" />
             </Button>
+
             <Button
               onClick={() => emblaApi?.scrollNext()}
-              className="rounded-full shadow w-9 h-9 2xl:w-12 2xl:h-12 bg-blue-600 hover:dark:bg-gray-950 cursor-pointer"
+              disabled={nextBtnDisabled}
+              className={clsx(
+                "rounded-full shadow w-9 h-9 2xl:w-12 2xl:h-12 bg-blue-600 hover:dark:bg-gray-950 cursor-pointer",
+                nextBtnDisabled && "opacity-50 cursor-not-allowed"
+              )}
             >
               <FaArrowRight className="w-6 h-6 dark:text-white" />
             </Button>

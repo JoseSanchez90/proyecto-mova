@@ -727,7 +727,7 @@ function HomePage() {
                   </Label>
                   <textarea
                     rows={4}
-                    className="w-full text-sm px-4 py-3 rounded-3xl border border-neutral-300 dark:border-neutral-700 dark:bg-neutral-800 dark:text-white focus:outline-none focus:border-neutral-900 dark:focus:border-white transition-colors resize-none"
+                    className="w-full text-sm px-4 py-3 rounded-3xl text-gray-600 dark:text-gray-300 border border-neutral-300 dark:border-neutral-700 dark:bg-neutral-800 focus:outline-none focus:border-neutral-900 dark:focus:border-white transition-colors resize-none"
                     placeholder="Cuéntanos sobre tu proyecto..."
                   />
                 </div>

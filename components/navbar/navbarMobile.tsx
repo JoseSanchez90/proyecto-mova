@@ -79,7 +79,7 @@ export default function NavbarMobile() {
   }, [items]);
 
   return (
-    <nav className="fixed top-2 left-1/2 -translate-x-1/2 z-50 w-[95%]">
+    <nav className="fixed top-3 left-1/2 -translate-x-1/2 z-50 w-[95%]">
       {/* Navbar container */}
       <div className="flex items-center justify-between bg-white dark:bg-neutral-900 rounded-2xl px-5 py-3 shadow-md shadow-black/20 dark:shadow-white/10 border border-neutral-200/40 dark:border-neutral-700/50 transition-colors">
         <button
@@ -100,10 +100,17 @@ export default function NavbarMobile() {
             pacifico.className
           )}
         >
-          <AuroraText>MOVA</AuroraText>
+          <a
+            href="#inicio"
+            onClick={(e) => handleScrollToSection(e, "#inicio")}
+          >
+            <AuroraText>MOVA</AuroraText>
+          </a>
         </h1>
 
-        <AnimatedThemeToggler />
+        <div className="bg-neutral-900 dark:bg-white flex rounded-full w-9 h-9 justify-center items-center">
+          <AnimatedThemeToggler className="text-white dark:text-black"/>
+        </div>
       </div>
 
       {/* Mobile menu */}
@@ -116,7 +123,7 @@ export default function NavbarMobile() {
             transition={{ duration: 0.25, ease: "easeOut" }}
             className="mt-1 bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700/50 shadow-lg shadow-black/30 dark:shadow-white/10 rounded-2xl py-4"
           >
-            <ul className="flex flex-col items-center gap-3">
+            <ul className="flex flex-col items-center gap-6">
               {items.map((item) => {
                 const id = item.href.replace("#", "");
                 const isActive = activeId === id;
@@ -126,10 +133,10 @@ export default function NavbarMobile() {
                       href={item.href}
                       onClick={(e) => handleScrollToSection(e, item.href)}
                       className={clsx(
-                        "block text-lg font-medium capitalize px-4 py-2 rounded-xl transition-colors duration-200",
+                        "block text-lg font-medium capitalize rounded-xl transition-colors duration-200",
                         isActive
-                          ? "bg-blue-700 text-white dark:bg-blue-500 dark:text-white"
-                          : "text-neutral-800 dark:text-neutral-200 hover:bg-neutral-200 dark:hover:bg-neutral-800"
+                          ? "text-blue-700 dark:text-blue-500"
+                          : "text-neutral-800 dark:text-neutral-200 hover:text-neutral-300 dark:hover:text-neutral-400"
                       )}
                       aria-current={isActive ? "page" : undefined}
                     >
