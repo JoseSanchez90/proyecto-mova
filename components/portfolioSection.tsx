@@ -8,7 +8,7 @@ import { FaArrowLeft } from "react-icons/fa";
 import { FaArrowRight } from "react-icons/fa";
 
 type Project = {
-  id: string | number;
+  image?: string | any;
   title: string;
   category: string;
   year?: string | number;
@@ -93,11 +93,9 @@ function PortfolioSection({ projects }: PortfolioSectionProps) {
                   key={i}
                   className="flex-[0_0_100%] sm:flex-[0_0_50%] px-4 pb-6"
                 >
-                  <div className="group relative cursor-pointer rounded-2xl bg-white dark:bg-neutral-800 border border-black shadow-[8px_8px_0_#000] p-8">
-                    <div className="bg-neutral-200 dark:bg-neutral-800 rounded-2xl h-72 2xl:h-80 mb-4 overflow-clip flex items-center justify-center transition-transform duration-300 group-hover:scale-[1.05]">
-                      <div className="text-neutral-400 dark:text-neutral-600 text-sm">
-                        Proyecto {item.id}
-                      </div>
+                  <div className="group relative cursor-pointer rounded-2xl bg-white dark:bg-neutral-800 border border-black shadow-[8px_8px_0_#000] p-5 lg:p-8">
+                    <div className="rounded-2xl h-80 2xl:h-120 mb-4 overflow-clip flex items-center justify-center">
+                      {item.image}
                     </div>
                     <h3 className="text-xl font-medium mb-2 group-hover:text-neutral-600 dark:group-hover:text-neutral-400 transition-colors dark:text-white">
                       {item.title}

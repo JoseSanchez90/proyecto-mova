@@ -4,6 +4,7 @@ import { AnimatedThemeToggler } from "../ui/animated-theme-toggler";
 import { useEffect, useState } from "react";
 import clsx from "clsx";
 import { pacifico } from "@/lib/fonts";
+import { AuroraText } from "../ui/aurora-text";
 
 export default function NavbarDesktop() {
   const [activeSection, setActiveSection] = useState("inicio");
@@ -60,7 +61,7 @@ export default function NavbarDesktop() {
         onClick={() => scrollToSection("inicio")}
         className="cursor-pointer"
       >
-        <p className={clsx("text-xl tracking-tighte font-bold [text-shadow:3px_3px_4px_rgba(0,0,0,0.4)] dark:[text-shadow:3px_3px_4px_rgba(255,255,255,0.3)] text-blue-700 dark:text-blue-500", pacifico.className)}>MOVA</p>
+        <p className={clsx("text-xl tracking-tighte font-bold", pacifico.className)}><AuroraText>MOVA</AuroraText></p>
       </button>
 
       {/* Enlaces */}

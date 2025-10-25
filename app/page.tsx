@@ -129,84 +129,84 @@ function HomePage() {
 
   const ProjectsItems = [
     {
-      id: 1,
+      image: <img src="/images/proyecto1.jpg" alt="proyecto-1" className="object-cover h-full w-full" />,
       title: "Casa Moderna Minimalista",
       category: "Residencial",
       year: "2024",
       area: "350m²",
     },
     {
-      id: 2,
+      image: <img src="/images/proyecto2.jpg" alt="proyecto-2" className="object-cover h-full w-full" />,
       title: "Edificio Corporativo Sustentable",
       category: "Comercial",
       year: "2024",
       area: "1200m²",
     },
     {
-      id: 3,
+      image: <img src="/images/proyecto3.jpg" alt="proyecto-3" className="object-cover h-full w-full" />,
       title: "Loft Industrial Renovado",
       category: "Interiorismo",
       year: "2023",
       area: "180m²",
     },
     {
-      id: 4,
+      image: <img src="/images/proyecto4.jpg" alt="proyecto-4" className="object-cover h-full w-full" />,
       title: "Complejo Residencial Premium",
       category: "Residencial",
       year: "2023",
       area: "2500m²",
     },
     {
-      id: 5,
+      image: <img src="/images/proyecto5.png" alt="proyecto-5" className="object-cover h-full w-full" />,
       title: "Remodelación de Cocina Familiar",
       category: "Remodelación",
       year: "2024",
       area: "40m²",
     },
     {
-      id: 6,
+      image: <img src="/images/proyecto6.jpg" alt="proyecto-6" className="object-cover h-full w-full" />,
       title: "Vivienda Compacta Sostenible",
       category: "Residencial",
       year: "2024",
       area: "120m²",
     },
     {
-      id: 7,
+      image: <img src="/images/proeycto7.jpg" alt="proyecto-7" className="object-cover h-full w-full" />,
       title: "Diseño de Oficina en Casa",
       category: "Interiorismo",
       year: "2023",
       area: "25m²",
     },
     {
-      id: 8,
+      image: <img src="/images/proyecto8.jpg" alt="proyecto-8" className="object-cover h-full w-full" />,
       title: "Reforma de Fachada Urbana",
       category: "Remodelación",
       year: "2023",
       area: "60m²",
     },
     {
-      id: 9,
+      image: <img src="/images/proyecto9.jpg" alt="proyecto-9" className="object-cover h-full w-full" />,
       title: "Tienda de Café de Autor",
       category: "Comercial",
       year: "2024",
       area: "90m²",
     },
     {
-      id: 10,
+      image: <img src="/images/proyecto10.jpg" alt="proyecto-10" className="object-cover h-full w-full" />,
       title: "Departamento Familiar Contemporáneo",
       category: "Interiorismo",
       year: "2024",
       area: "140m²",
     },
     {
-      id: 11,
+      image: <img src="/images/proyecto11.jpg" alt="proyecto-11" className="object-cover h-full w-full" />,
       title: "Ampliación de Vivienda Unifamiliar",
       category: "Residencial",
       year: "2022",
       area: "220m²",
     },
     {
-      id: 12,
+      image: <img src="/images/proyecto12.jpg" alt="proyecto-12" className="object-cover h-full w-full" />,
       title: "Estudio Creativo Minimalista",
       category: "Corporativo",
       year: "2023",
@@ -543,7 +543,7 @@ function HomePage() {
             ].map((testimonial, index) => (
               <div
                 key={index}
-                className="relative flex flex-col justify-between items-center text-center p-8 rounded-2xl bg-white dark:bg-neutral-800 border border-black shadow-[8px_8px_0_#000] lg:shadow-[4px_4px_0_#000] lg:hover:shadow-[8px_8px_0_#000] lg:hover:-translate-x-1 lg:hover:-translate-y-1 lg:transition-all duration-200"
+                className="relative flex flex-col justify-between items-center text-center p-5 lg:p-8 rounded-2xl bg-white dark:bg-neutral-800 border border-black shadow-[8px_8px_0_#000] lg:shadow-[4px_4px_0_#000] lg:hover:shadow-[8px_8px_0_#000] lg:hover:-translate-x-1 lg:hover:-translate-y-1 lg:transition-all duration-200"
               >
                 <div className="flex flex-col">
                   <div className="flex items-center justify-center gap-1 mb-4">
@@ -595,7 +595,7 @@ function HomePage() {
               <div className="flex flex-col lg:flex-row gap-6 lg:gap-20">
                 <div className="flex items-start gap-4">
                   <div className="bg-blue-700 p-3 rounded-full">
-                    <Mail size={20} className="dark:text-white" />
+                    <Mail size={20} className="text-white" />
                   </div>
                   <div>
                     <p className="font-medium mb-1 dark:text-white">Email</p>
@@ -607,7 +607,7 @@ function HomePage() {
 
                 <div className="flex items-start gap-4">
                   <div className="bg-blue-700 p-3 rounded-full">
-                    <MapPin size={20} className="dark:text-white" />
+                    <MapPin size={20} className="text-white" />
                   </div>
                   <div>
                     <p className="font-medium mb-1 dark:text-white">
